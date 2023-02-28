@@ -5,19 +5,24 @@ import requestFromAPI from '../services/apiRequest';
 
 export default function PlanetsProvider({ children }) {
   const [planets, setPlanets] = useState([]);
+  const [filterName, setFilterName] = useState('');
 
   useEffect(() => {
     const fetch = async () => {
       const planetsFiltered = await requestFromAPI();
-      setPlanets(planetsFiltered);
+      const filterResult = planetsFiltered.filter(({ name }) => name.toUpperCase()
+        .includes(filterName.toUpperCase()));
+      setPlanets(filterResult);
     };
     fetch();
-  }, []);
+  }, [filterName]);
 
   const value = useMemo(() => ({
     planets,
     setPlanets,
-  }), [planets]);
+    filterName,
+    setFilterName,
+  }), [planets, filterName]);
 
   return (
     <PlanetContext.Provider value={ value }>
