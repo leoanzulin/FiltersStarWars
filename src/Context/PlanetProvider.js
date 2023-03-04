@@ -7,6 +7,9 @@ export default function PlanetsProvider({ children }) {
   const [planets, setPlanets] = useState([]);
   const [filterName, setFilterName] = useState('');
   const [selectedFilters, setSelectedFilters] = useState([]);
+  const [collunsOptions, setCollunsOptions] = useState(['population',
+    'orbital_period', 'diameter',
+    'rotation_period', 'surface_water']);
 
   useEffect(() => {
     const fetch = async () => {
@@ -41,7 +44,9 @@ export default function PlanetsProvider({ children }) {
     setFilterName,
     selectedFilters,
     setSelectedFilters,
-  }), [planets, filterName, selectedFilters]);
+    collunsOptions,
+    setCollunsOptions,
+  }), [planets, filterName, selectedFilters, collunsOptions]);
 
   return (
     <PlanetContext.Provider value={ value }>
