@@ -5,7 +5,7 @@ function Filters() {
   const { selectedFilters, setSelectedFilters } = useContext(PlanetContext);
   const { collunsOptions, setCollunsOptions } = useContext(PlanetContext);
   const [stateFilter, setStateFilter] = useState({
-    column: 'population',
+    column: collunsOptions[0],
     comparison: 'maior que',
     value: 0,
   });
@@ -22,6 +22,16 @@ function Filters() {
     setSelectedFilters([...selectedFilters, stateFilter]);
     setCollunsOptions([...collunsOptions.filter((column) => column
        !== stateFilter.column)]);
+  };
+
+  const handleClickRemoveAll = () => {
+    setSelectedFilters([]);
+  };
+
+  const handleClickRemoveFilter = (currFilter) => {
+    setSelectedFilters([...selectedFilters.filter((filter) => filter.column
+      !== currFilter)]);
+    setCollunsOptions([...collunsOptions, currFilter]);
   };
   return (
     <div>
@@ -79,21 +89,22 @@ function Filters() {
         <button
           type="button"
           data-testid="button-remove-filters"
+          onClick={ () => handleClickRemoveAll() }
         >
           RemoveFilters
 
         </button>
       </form>
       {selectedFilters.map((filter) => (
-        <div key={ filter }>
+        <div key={ filter } data-testid="filter">
           <p>
             {
               `${filter.column} ${filter.comparison} ${filter.value}`
             }
           </p>
           <button
-            data-testid="filter"
             type="button"
+            onClick={ () => handleClickRemoveFilter(filter.column) }
           >
             excluir
 
