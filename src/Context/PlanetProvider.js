@@ -6,23 +6,42 @@ import requestFromAPI from '../services/apiRequest';
 export default function PlanetsProvider({ children }) {
   const [planets, setPlanets] = useState([]);
   const [filterName, setFilterName] = useState('');
+  const [selectedFilters, setSelectedFilters] = useState([]);
 
   useEffect(() => {
     const fetch = async () => {
-      const planetsFiltered = await requestFromAPI();
-      const filterResult = planetsFiltered.filter(({ name }) => name.toUpperCase()
+      const planetsFilteredName = await requestFromAPI();
+      const filterResult = planetsFilteredName.filter(({ name }) => name.toUpperCase()
         .includes(filterName.toUpperCase()));
-      setPlanets(filterResult);
+      const planetsFiltered = filterResult.filter((planet) => {
+        const filteredResults = selectedFilters
+          .map(({ column, comparison, value }) => {
+            switch (comparison) {
+            case 'maior que':
+              return Number(planet[column]) > Number(value);
+            case 'menor que':
+              return Number(planet[column]) < Number(value);
+            case 'igual a':
+              return Number(planet[column]) === Number(value);
+            default:
+              return true;
+            }
+          });
+        return filteredResults.every((el) => el);
+      });
+      setPlanets(planetsFiltered);
     };
     fetch();
-  }, [filterName]);
+  }, [filterName, selectedFilters]);
 
   const value = useMemo(() => ({
     planets,
     setPlanets,
     filterName,
     setFilterName,
-  }), [planets, filterName]);
+    selectedFilters,
+    setSelectedFilters,
+  }), [planets, filterName, selectedFilters]);
 
   return (
     <PlanetContext.Provider value={ value }>
