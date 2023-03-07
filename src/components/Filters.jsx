@@ -103,6 +103,7 @@ function Filters() {
             }
           </p>
           <button
+            data-testid="button-remove-filter"
             type="button"
             onClick={ () => handleClickRemoveFilter(filter.column) }
           >
