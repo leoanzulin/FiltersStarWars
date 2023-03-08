@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import PlanetContext from '../Context/PlanetContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Filters() {
   const { selectedFilters, setSelectedFilters } = useContext(PlanetContext);
