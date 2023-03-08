@@ -6,6 +6,7 @@ function NameFilter() {
   return (
     <input
       type="text"
+      placeholder="name"
       data-testid="name-filter"
       onChange={ ({ target }) => { setFilterName(target.value); } }
     />
