@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import PlanetContext from '../Context/PlanetContext';
+import './Table.css';
 
 function Table() {
   const { planets } = useContext(PlanetContext);

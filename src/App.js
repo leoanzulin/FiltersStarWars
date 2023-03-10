@@ -3,11 +3,18 @@ import Table from './components/Table';
 import NameFilter from './components/NameFilter';
 import Filters from './components/Filters';
 import PlanetsProvider from './Context/PlanetProvider';
+import starWarsLogo from './logo-star wars.png';
+import grafismo from './grafismo-topo.png';
+import './App.css';
 
 function App() {
   return (
     <PlanetsProvider>
-      <div>
+      <div className="fullPage">
+        <div className="logo">
+          <img src={ starWarsLogo } alt="StarWars" className="starWarsLogo" />
+          <img src={ grafismo } alt="grafismo" />
+        </div>
         <NameFilter />
         <Filters />
         <Table />
@@ -16,4 +23,4 @@ function App() {
   );
 }
 
-export default App; // iniciando
+export default App;

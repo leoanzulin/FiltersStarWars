@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+.fullPage {
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    width: 100%;
+    height: 200%;
+    background-image: url(./fundo-star-wars\ \(1\)\ 1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    align-items: center;
+   
+}
+.logo {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+img {
+    position: absolute;
+}
+.starWarsLogo {
+    margin-top: 20vh;
+}
