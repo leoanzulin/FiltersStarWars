@@ -9,7 +9,7 @@
     color: white;
     overflow: auto;
     flex-wrap: wrap;
-    width: 90vw;
+    width: 95vw;
     margin: auto;
 }
  table {
@@ -42,7 +42,7 @@
     font-family: "Epilogue";
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 18px;
     color: yellow;
   }

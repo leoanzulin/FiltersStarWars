@@ -15,7 +15,9 @@ function App() {
           <img src={ starWarsLogo } alt="StarWars" className="starWarsLogo" />
           <img src={ grafismo } alt="grafismo" />
         </div>
-        <NameFilter />
+        <div className="name-filter">
+          <NameFilter />
+        </div>
         <Filters />
         <Table />
       </div>

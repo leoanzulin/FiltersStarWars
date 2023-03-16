@@ -29,3 +29,11 @@ img {
 .starWarsLogo {
     margin-top: 20vh;
 }
+.name-filter {
+    display: flex;
+ padding-top: 20px;
+ justify-content: center;
+ width: 100vw;
+ align-items: center;
+ z-index: 1;
+}
